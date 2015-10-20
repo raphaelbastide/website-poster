@@ -2,11 +2,13 @@
 
 ## Usage
 
-Download or clone `collage` to your hard drive, open a terminal and `cd` to your the folder where `collage` is, then:
+Require [Imagemagick](http://imagemagick.org/).
+
+Download or clone `collage` to your hard drive, open a terminal and `cd` to your the folder where `collage` is. Then execute:
 
     $ ./collage
 
-You may want to change the depth and extentions variable in the script to customise the use of this program.
+You may want to change the depth and extensions variable in the script to customise the use of this program.
 
 ## Demo
 
