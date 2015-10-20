@@ -3,13 +3,18 @@
 # Make an image collage out of a URL
 # https://github.com/raphaelbastide/website-poster
 
+# Number of folder level to search in
+search_depth=1
+# Images extentions to look for
+extentions=jpg,gif,png,svg
+
 read -p "Do you already have downloaded images? " -n 1 -r
 if [[ $REPLY =~ ^[Nn]$ ]]
 then
   mkdir ./images
   echo "Enter a URL: "
   read url
-  wget -nd -r -l 1 -P images -A jpg,gif,png,svg $url
+  wget -nd -r -l $search_depth -P images -A $extentions $url
 fi
 montage images/* -mode Concatenate -tile 12x -geometry +30+30 -background white poster.png
 #montage images/* -tile 20x -geometry x300+10+10 -background white tile.png
