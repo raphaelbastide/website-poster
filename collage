@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo $n
+read -p "Do you already have images? " -n 1 -r
+if [[ $REPLY =~ ^[Nn]$ ]]
+then
+  mkdir ./images
+  echo "Enter a URL: "
+  read url
+  rand = RANDOM%600+200
+  wget -nd -r -l 1 -P images -A jpg,gif,png,svg $url
+fi
+montage images/* -mode Concatenate -tile 12x -geometry +30+30 -background white tile.png
+#montage images/* -tile 20x -geometry x300+10+10 -background white tile.png
+#montage images/* -tile 10x -geometry 200x200+1+1 -background white tile.png
