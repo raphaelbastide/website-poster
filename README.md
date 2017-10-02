@@ -2,7 +2,7 @@
 
 ## Usage
 
-Requires [Imagemagick](http://imagemagick.org/).
+Requires [Imagemagick](http://imagemagick.org/). Can be improved (a lot).
 
 Download or clone `collage` to your hard drive, open a terminal and `cd` to your the folder where `collage` is. Then execute:
 

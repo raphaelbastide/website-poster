@@ -8,14 +8,23 @@ search_depth=1
 # Images extentions to look for
 extentions=jpg,gif,png,svg
 
-read -p "Do you already have downloaded images? " -n 1 -r
-if [[ $REPLY =~ ^[Nn]$ ]]
-then
-  mkdir ./images
-  echo "Enter a URL: "
-  read url
-  wget -nd -r -l $search_depth -P images -A $extentions $url
+read -p "Use natural image sizes? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  naturalsize=1
 fi
-montage images/* -mode Concatenate -tile 12x -geometry +30+30 -background white poster.png
-#montage images/* -tile 20x -geometry x300+10+10 -background white tile.png
-#montage images/* -tile 10x -geometry 200x200+1+1 -background white tile.png
+echo -e "\nEnter a URL: "
+read url
+# mkdir ./images
+rm ./images/*
+rm poster.png
+wget -nd -r -l $search_depth -P images -A $extentions $url
+
+if (( $naturalsize == 1 ));
+then
+  echo -e "\n Proceeding to collage…"
+  montage images/* -mode Concatenate -tile 7x -background white poster.png
+else
+  echo -e "\n Proceeding to collage…"
+  montage images/* -tile 7x -geometry 200x200+50+50 -background white poster.png
+fi
+echo "Your Poster is ready!"
